@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -107,7 +107,7 @@ export default function ProductCard({ product }: { product: Product }) {
 
           <div className="flex items-center justify-between">
             <div className="flex flex-col">
-              <span className="text-xl font-bold">?{product.price}</span>
+              <span className="text-xl font-bold">₱{product.price}</span>
             </div>
             <Button
               size="sm"

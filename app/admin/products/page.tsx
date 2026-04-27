@@ -1,4 +1,4 @@
-import { prisma } from "@/lib/prisma";
+﻿import { prisma } from "@/lib/prisma";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Plus, Package } from "lucide-react";
@@ -98,7 +98,7 @@ export default async function AdminProductsPage() {
                   </span>
                 </td>
                 <td className="px-6 py-4 font-semibold text-primary">
-                  ?{product.price}
+                  ₱{product.price}
                 </td>
                 <td className="px-6 py-4">
                   <span

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect } from "react";
 import { useCartStore } from "@/store/cartStore";
@@ -127,7 +127,7 @@ export default function CheckoutPage() {
           <div className="border-t border-border pt-4 flex justify-between">
             <span className="font-medium">Total</span>
             <span className="font-bold text-primary">
-              ?{total().toFixed(2)}
+              ₱{total().toFixed(2)}
             </span>
           </div>
         </div>

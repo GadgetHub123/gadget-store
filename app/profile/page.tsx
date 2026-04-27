@@ -1,4 +1,4 @@
-import { auth } from "@/auth";
+﻿import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 import { redirect } from "next/navigation";
 import Link from "next/link";
@@ -138,7 +138,7 @@ export default async function ProfilePage() {
                         )}
                       </div>
                       <p className="font-bold text-lg text-primary">
-                        ?{order.total.toFixed(2)}
+                        ₱{order.total.toFixed(2)}
                       </p>
                     </div>
                   </div>

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect } from "react";
 import { useCartStore } from "@/store/cartStore";
@@ -68,7 +68,7 @@ export default function CartPage() {
                     {item.name}
                   </h2>
                   <p className="text-primary text-sm font-semibold">
-                    ?{item.price}
+                    ₱{item.price}
                   </p>
                 </div>
                 <div className="flex items-center gap-1 bg-secondary border border-border rounded-lg p-1">
@@ -113,7 +113,7 @@ export default function CartPage() {
               <div className="space-y-2 mb-4">
                 <div className="flex justify-between text-sm text-muted-foreground">
                   <span>Subtotal</span>
-                  <span>?{total().toFixed(2)}</span>
+                  <span>₱{total().toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between text-sm text-muted-foreground">
                   <span>Shipping</span>
@@ -122,7 +122,7 @@ export default function CartPage() {
                 <div className="h-px bg-border my-3" />
                 <div className="flex justify-between font-bold text-lg">
                   <span>Total</span>
-                  <span className="text-primary">?{total().toFixed(2)}</span>
+                  <span className="text-primary">₱{total().toFixed(2)}</span>
                 </div>
               </div>
               <Button
