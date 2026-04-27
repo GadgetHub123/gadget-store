@@ -33,7 +33,7 @@ export async function sendOrderConfirmationEmail({
       <tr>
         <td style="padding:10px;border-bottom:1px solid #f0f0f0;">${item.name}</td>
         <td style="padding:10px;border-bottom:1px solid #f0f0f0;text-align:center;">${item.quantity}</td>
-        <td style="padding:10px;border-bottom:1px solid #f0f0f0;text-align:right;">$₱{(item.price * item.quantity).toFixed(2)}</td>
+        <td style="padding:10px;border-bottom:1px solid #f0f0f0;text-align:right;">₱${(item.price * item.quantity).toFixed(2)}</td>
       </tr>`,
     )
     .join("");
@@ -87,7 +87,7 @@ export async function sendOrderConfirmationEmail({
           <div style="border-top:2px solid #000;padding-top:16px;margin-bottom:24px;">
             <div style="display:flex;justify-content:space-between;">
               <span style="font-weight:bold;font-size:16px;">Total</span>
-              <span style="font-weight:bold;font-size:16px;color:#00e5cc;">$${total.toFixed(2)}</span>
+              <span style="font-weight:bold;font-size:16px;color:#00e5cc;">₱${total.toFixed(2)}</span>
             </div>
           </div>
 
