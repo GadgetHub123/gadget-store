@@ -24,6 +24,15 @@ export default async function OrderPage({
 
   if (!order) return notFound();
 
+  const paymentMethod = (order as any).paymentMethod || "cod";
+  const paymentLabel =
+    paymentMethod === "gcash"
+      ? "💙 GCash"
+      : paymentMethod === "card"
+        ? "💳 Credit / Debit Card"
+        : "💵 Cash on Delivery";
+  const isPaid = paymentMethod !== "cod";
+
   return (
     <main className="min-h-screen py-12 px-8">
       <div className="max-w-2xl mx-auto">
@@ -43,7 +52,6 @@ export default async function OrderPage({
 
         {/* Receipt card */}
         <div className="bg-card border border-border rounded-2xl overflow-hidden">
-          {/* Top glow */}
           <div className="h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
 
           {/* Order meta */}
@@ -66,19 +74,59 @@ export default async function OrderPage({
                 </p>
               </div>
               <div>
-                <p className="text-xs text-muted-foreground mb-1">Status</p>
-                <span className="inline-flex items-center gap-1.5 text-xs bg-yellow-500/10 border border-yellow-500/20 text-yellow-400 px-2.5 py-1 rounded-full">
+                <p className="text-xs text-muted-foreground mb-1">
+                  Order status
+                </p>
+                <span className="inline-flex items-center gap-1.5 text-xs bg-yellow-500/10 border border-yellow-500/20 text-yellow-400 px-2.5 py-1 rounded-full capitalize">
                   <span className="w-1.5 h-1.5 rounded-full bg-yellow-400 animate-pulse" />
                   {order.status.charAt(0).toUpperCase() + order.status.slice(1)}
                 </span>
               </div>
               <div>
-                <p className="text-xs text-muted-foreground mb-1">Payment</p>
-                <span className="inline-flex items-center gap-1.5 text-xs bg-green-500/10 border border-green-500/20 text-green-400 px-2.5 py-1 rounded-full">
-                  <CheckCircle className="w-3 h-3" />
-                  Paid
+                <p className="text-xs text-muted-foreground mb-1">
+                  Payment status
+                </p>
+                <span
+                  className={`inline-flex items-center gap-1.5 text-xs px-2.5 py-1 rounded-full border ${
+                    isPaid
+                      ? "bg-green-500/10 border-green-500/20 text-green-400"
+                      : "bg-orange-500/10 border-orange-500/20 text-orange-400"
+                  }`}
+                >
+                  <span
+                    className={`w-1.5 h-1.5 rounded-full animate-pulse ${
+                      isPaid ? "bg-green-400" : "bg-orange-400"
+                    }`}
+                  />
+                  {isPaid ? "Paid" : "Pay on delivery"}
                 </span>
               </div>
+            </div>
+          </div>
+
+          {/* Payment method */}
+          <div className="px-6 py-4 border-b border-border flex items-start gap-3">
+            <div className="w-4 h-4 mt-0.5 flex-shrink-0 text-primary">💳</div>
+            <div>
+              <p className="text-xs text-muted-foreground mb-1">
+                Payment method
+              </p>
+              <p className="text-sm font-medium">{paymentLabel}</p>
+              {paymentMethod === "cod" && (
+                <p className="text-xs text-orange-400 mt-1">
+                  Please prepare exact amount upon delivery.
+                </p>
+              )}
+              {paymentMethod === "gcash" && (
+                <p className="text-xs text-green-400 mt-1">
+                  Payment received via GCash.
+                </p>
+              )}
+              {paymentMethod === "card" && (
+                <p className="text-xs text-green-400 mt-1">
+                  Payment charged to your card.
+                </p>
+              )}
             </div>
           </div>
 
@@ -158,7 +206,6 @@ export default async function OrderPage({
             Estimated delivery: 3-5 business days
           </div>
 
-          {/* Bottom glow */}
           <div className="h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
         </div>
 

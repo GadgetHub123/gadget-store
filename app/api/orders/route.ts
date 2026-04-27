@@ -33,6 +33,7 @@ export async function POST(req: Request) {
       total,
       address,
       status: "pending",
+      paymentMethod: payment || "cod",
       items: {
         create: items.map(
           (item: { id: string; price: number; quantity: number }) => ({
@@ -45,7 +46,6 @@ export async function POST(req: Request) {
     },
   });
 
-  // Send confirmation email
   try {
     await sendOrderConfirmationEmail({
       to: session.user.email!,
