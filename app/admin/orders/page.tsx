@@ -33,7 +33,7 @@ export default async function AdminOrdersPage() {
           },
           {
             label: "Total revenue",
-            value: `$${totalRevenue.toFixed(2)}`,
+            value: `?${totalRevenue.toFixed(2)}`,
             icon: TrendingUp,
             color: "text-primary",
             bg: "from-primary/10 to-primary/5",
@@ -148,3 +148,4 @@ export default async function AdminOrdersPage() {
     </div>
   );
 }
+
