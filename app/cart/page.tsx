@@ -91,7 +91,7 @@ export default function CartPage() {
                   </button>
                 </div>
                 <div className="text-sm font-semibold w-16 text-right">
-                  ?{(item.price * item.quantity).toFixed(2)}
+                  ₱{(item.price * item.quantity).toFixed(2)}
                 </div>
                 <button
                   onClick={() => removeItem(item.id)}

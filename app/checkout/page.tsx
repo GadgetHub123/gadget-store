@@ -120,7 +120,7 @@ export default function CheckoutPage() {
                 </p>
               </div>
               <p className="text-sm font-semibold">
-                ?{(item.price * item.quantity).toFixed(2)}
+                ₱{(item.price * item.quantity).toFixed(2)}
               </p>
             </div>
           ))}

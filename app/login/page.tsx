@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import { signIn } from "next-auth/react";
@@ -112,7 +112,7 @@ export default function LoginPage() {
             </form>
 
             <p className="text-sm text-muted-foreground text-center mt-6">
-              No account?{" "}
+              No account₱{" "}
               <Link href="/register" className="text-primary hover:underline">
                 Register here
               </Link>

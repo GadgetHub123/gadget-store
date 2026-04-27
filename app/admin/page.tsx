@@ -58,7 +58,7 @@ export default async function AdminDashboard() {
     },
     {
       label: "Total revenue",
-      value: `??{(revenue._sum.total ?? 0).toFixed(2)}`,
+      value: `?₱{(revenue._sum.total ?? 0).toFixed(2)}`,
       icon: TrendingUp,
       href: "/admin/orders",
       color: "text-primary",
