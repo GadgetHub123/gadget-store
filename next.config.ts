@@ -14,6 +14,7 @@ const nextConfig: NextConfig = {
     ],
     dangerouslyAllowSVG: true,
   },
+  serverExternalPackages: ["@prisma/client", "prisma"],
 };
 
 export default nextConfig;
