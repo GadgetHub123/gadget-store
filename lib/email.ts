@@ -15,6 +15,7 @@ type OrderEmailProps = {
   items: { name: string; quantity: number; price: number }[];
   total: number;
   address: string;
+  payment?: string;
 };
 
 export async function sendOrderConfirmationEmail({
@@ -24,6 +25,7 @@ export async function sendOrderConfirmationEmail({
   items,
   total,
   address,
+  payment,
 }: OrderEmailProps) {
   const itemRows = items
     .map(
@@ -35,6 +37,13 @@ export async function sendOrderConfirmationEmail({
       </tr>`,
     )
     .join("");
+
+  const paymentLabel =
+    payment === "gcash"
+      ? "GCash"
+      : payment === "card"
+        ? "Credit / Debit Card"
+        : "Cash on Delivery";
 
   await transporter.sendMail({
     from: `"GadgetHub ⚡" <${process.env.GMAIL_USER}>`,
@@ -82,9 +91,14 @@ export async function sendOrderConfirmationEmail({
             </div>
           </div>
 
-          <div style="background:#f5f5f5;border-radius:8px;padding:16px;margin-bottom:32px;">
+          <div style="background:#f5f5f5;border-radius:8px;padding:16px;margin-bottom:16px;">
             <p style="margin:0;font-size:13px;color:#888;">Delivering to</p>
             <p style="margin:4px 0 0;font-size:15px;color:#111;">${address}</p>
+          </div>
+
+          <div style="background:#f5f5f5;border-radius:8px;padding:16px;margin-bottom:32px;">
+            <p style="margin:0;font-size:13px;color:#888;">Payment method</p>
+            <p style="margin:4px 0 0;font-size:15px;color:#111;">${paymentLabel}</p>
           </div>
 
           <p style="color:#666;font-size:14px;margin:0;">
@@ -94,6 +108,73 @@ export async function sendOrderConfirmationEmail({
 
         <div style="background:#f5f5f5;padding:24px 32px;text-align:center;">
           <p style="margin:0;font-size:13px;color:#999;">
+            © 2026 GadgetHub. All rights reserved.
+          </p>
+        </div>
+      </div>
+    `,
+  });
+}
+
+type WelcomeEmailProps = {
+  to: string;
+  customerName: string;
+};
+
+export async function sendWelcomeEmail({
+  to,
+  customerName,
+}: WelcomeEmailProps) {
+  await transporter.sendMail({
+    from: `"GadgetHub ⚡" <${process.env.GMAIL_USER}>`,
+    to,
+    subject: `Welcome to GadgetHub, ${customerName}! ⚡`,
+    html: `
+      <div style="font-family:sans-serif;max-width:600px;margin:0 auto;background:#f9f9f9;padding:0;">
+
+        <div style="background:#000;padding:32px;text-align:center;">
+          <h1 style="color:#00e5cc;margin:0;font-size:28px;letter-spacing:-1px;">
+            ⚡ GadgetHub
+          </h1>
+        </div>
+
+        <div style="background:#fff;padding:40px 32px;text-align:center;">
+          <div style="font-size:48px;margin-bottom:16px;">👋</div>
+          <h2 style="margin:0 0 8px;font-size:24px;color:#111;">
+            Welcome, ${customerName}!
+          </h2>
+          <p style="color:#666;margin:0 0 32px;font-size:16px;">
+            Your GadgetHub account has been created successfully.
+            You're now part of a community of tech enthusiasts!
+          </p>
+
+          <a href="https://gadget-store.vercel.app/shop" style="display:inline-block;background:#00e5cc;color:#000;padding:14px 32px;border-radius:50px;text-decoration:none;font-weight:bold;font-size:15px;margin-bottom:32px;">
+            Start Shopping →
+          </a>
+
+          <div style="border-top:1px solid #f0f0f0;padding-top:32px;">
+            <div style="display:flex;justify-content:center;gap:32px;">
+              ${[
+                { icon: "🎧", label: "Premium Audio" },
+                { icon: "⌚", label: "Wearables" },
+                { icon: "📱", label: "Smartphones" },
+                { icon: "💻", label: "Accessories" },
+              ]
+                .map(
+                  (item) => `
+                <div style="text-align:center;">
+                  <div style="font-size:24px;margin-bottom:4px;">${item.icon}</div>
+                  <div style="font-size:12px;color:#888;">${item.label}</div>
+                </div>
+              `,
+                )
+                .join("")}
+            </div>
+          </div>
+        </div>
+
+        <div style="background:#000;padding:24px 32px;text-align:center;">
+          <p style="margin:0;font-size:13px;color:#666;">
             © 2026 GadgetHub. All rights reserved.
           </p>
         </div>

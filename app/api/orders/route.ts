@@ -15,7 +15,7 @@ export async function POST(req: Request) {
     );
   }
 
-  const { items, address } = await req.json();
+  const { items, address, payment } = await req.json();
 
   if (!items || items.length === 0) {
     return NextResponse.json({ error: "Cart is empty" }, { status: 400 });
@@ -60,6 +60,7 @@ export async function POST(req: Request) {
       ),
       total,
       address,
+      payment: payment || "cod",
     });
   } catch (err) {
     console.error("Email failed:", err);
