@@ -33,7 +33,7 @@ export async function sendOrderConfirmationEmail({
       <tr>
         <td style="padding:10px;border-bottom:1px solid #f0f0f0;">${item.name}</td>
         <td style="padding:10px;border-bottom:1px solid #f0f0f0;text-align:center;">${item.quantity}</td>
-        <td style="padding:10px;border-bottom:1px solid #f0f0f0;text-align:right;">$${(item.price * item.quantity).toFixed(2)}</td>
+        <td style="padding:10px;border-bottom:1px solid #f0f0f0;text-align:right;">$?{(item.price * item.quantity).toFixed(2)}</td>
       </tr>`,
     )
     .join("");

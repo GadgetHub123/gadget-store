@@ -120,14 +120,14 @@ export default function CheckoutPage() {
                 </p>
               </div>
               <p className="text-sm font-semibold">
-                ${(item.price * item.quantity).toFixed(2)}
+                ?{(item.price * item.quantity).toFixed(2)}
               </p>
             </div>
           ))}
           <div className="border-t border-border pt-4 flex justify-between">
             <span className="font-medium">Total</span>
             <span className="font-bold text-primary">
-              ${total().toFixed(2)}
+              ?{total().toFixed(2)}
             </span>
           </div>
         </div>

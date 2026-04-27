@@ -168,11 +168,11 @@ export default async function OrderPage({
                       {item.product.name}
                     </p>
                     <p className="text-xs text-muted-foreground mt-0.5">
-                      ${item.priceAtPurchase} × {item.quantity}
+                      ₱{item.priceAtPurchase} × {item.quantity}
                     </p>
                   </div>
                   <p className="font-semibold text-sm flex-shrink-0">
-                    ${(item.priceAtPurchase * item.quantity).toFixed(2)}
+                    ₱{(item.priceAtPurchase * item.quantity).toFixed(2)}
                   </p>
                 </div>
               ))}
@@ -183,7 +183,7 @@ export default async function OrderPage({
           <div className="px-6 py-4 border-b border-border space-y-2">
             <div className="flex justify-between text-sm text-muted-foreground">
               <span>Subtotal</span>
-              <span>${order.total.toFixed(2)}</span>
+              <span>₱{order.total.toFixed(2)}</span>
             </div>
             <div className="flex justify-between text-sm text-muted-foreground">
               <span>Shipping</span>
@@ -196,7 +196,7 @@ export default async function OrderPage({
             <div className="h-px bg-border my-2" />
             <div className="flex justify-between font-bold text-lg">
               <span>Total</span>
-              <span className="text-primary">${order.total.toFixed(2)}</span>
+              <span className="text-primary">₱{order.total.toFixed(2)}</span>
             </div>
           </div>
 

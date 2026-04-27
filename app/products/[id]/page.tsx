@@ -111,14 +111,14 @@ export default async function ProductPage({
                 </p>
               </div>
               <div className="flex items-end gap-3">
-                <span className="text-5xl font-bold">${product.price}</span>
-                <span className="text-muted-foreground text-sm mb-2">USD</span>
+                <span className="text-5xl font-bold">₱{product.price}</span>
+                <span className="text-muted-foreground text-sm mb-2">PHP</span>
               </div>
               <div className="h-px bg-gradient-to-r from-border via-primary/20 to-border" />
               <AddToCartButton product={product} />
               <div className="flex flex-wrap gap-2">
                 {[
-                  "Free shipping over $99",
+                  "Free shipping over ₱99",
                   "Secure checkout",
                   "Easy returns",
                 ].map((f) => (
@@ -177,7 +177,7 @@ export default async function ProductPage({
                           {rel.name}
                         </h3>
                         <p className="text-primary font-semibold mt-1">
-                          ${rel.price}
+                          ₱{rel.price}
                         </p>
                       </div>
                     </div>

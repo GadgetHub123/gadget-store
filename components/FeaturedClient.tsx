@@ -168,7 +168,7 @@ export default function FeaturedClient({
                 </p>
                 <div className="flex items-center gap-6">
                   <span className="text-4xl font-bold text-primary">
-                    ${slide.price}
+                    ?{slide.price}
                   </span>
                   <Link href={slide.href}>
                     <button className="text-white/80 text-sm bg-white/10 backdrop-blur-sm px-8 py-3 hover:bg-primary hover:text-primary-foreground transition-all duration-200">

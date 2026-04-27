@@ -33,7 +33,7 @@ export default async function AdminOrdersPage() {
           },
           {
             label: "Total revenue",
-            value: `?${totalRevenue.toFixed(2)}`,
+            value: `??{totalRevenue.toFixed(2)}`,
             icon: TrendingUp,
             color: "text-primary",
             bg: "from-primary/10 to-primary/5",
@@ -125,7 +125,7 @@ export default async function AdminOrdersPage() {
                   {order.items.length} items
                 </td>
                 <td className="px-6 py-4 font-semibold text-primary">
-                  ${order.total.toFixed(2)}
+                  ?{order.total.toFixed(2)}
                 </td>
                 <td className="px-6 py-4">
                   <span className="inline-flex items-center gap-1.5 text-xs bg-yellow-500/10 border border-yellow-500/20 text-yellow-400 px-2.5 py-1 rounded-full capitalize">
