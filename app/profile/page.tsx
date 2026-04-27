@@ -17,7 +17,7 @@ export default async function ProfilePage() {
   });
 
   const totalItems = orders.reduce((sum, o) => sum + o.items.length, 0);
-  const totalSpent = `?${orders.reduce((sum, o) => sum + o.total, 0).toFixed(2)}`;
+  const totalSpent = `₱${orders.reduce((sum, o) => sum + o.total, 0).toFixed(2)}`;
 
   return (
     <main className="min-h-screen">
@@ -162,5 +162,3 @@ export default async function ProfilePage() {
     </main>
   );
 }
-
-
